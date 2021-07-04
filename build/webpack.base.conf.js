@@ -41,28 +41,14 @@ const baseWebpackConfig = {
     path: PATHS.dist,
     publicPath: isDev ? '/' : './'
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: 'vendors',
-          test: /node_modules/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    }
-  },
   module: {
     rules: [
       {
-        // JavaScript
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: '/node_modules/'
       },
       {
-        // Vue
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -72,15 +58,6 @@ const baseWebpackConfig = {
         }
       },
       {
-        // Fonts
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
-      },
-      {
-        // images / icons
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -90,29 +67,15 @@ const baseWebpackConfig = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-
-            }
-          },
-          {
-            loader: 'sass-loader'
-          }
+          {loader: MiniCssExtractPlugin.loader,},
+          {loader: 'css-loader'},
+          {loader: 'sass-loader'}
         ],
       }
     ]
   },
   resolve: {
     alias: {
-      '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
-      '@': `${PATHS.src}/js`, // Example: import Sort from "@/utils/sort.js"
       vue$: 'vue/dist/vue.js'
     }
   },
