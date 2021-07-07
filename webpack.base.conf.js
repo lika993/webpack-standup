@@ -11,8 +11,8 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 // Main const
 const PATHS = {
-  src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '../public/static'),
+  src: path.join(__dirname, './src'),
+  dist: path.join(__dirname, './public/static'),
   assets: 'assets/'
 }
 const buildConfig = {
@@ -22,7 +22,7 @@ const buildConfig = {
 const devConfig = {
   devtool: 'eval',
   devServer: {
-    contentBase: path.join(__dirname, '../public/static'),
+    contentBase: path.join(__dirname, './public/static'),
     port: 8081,
     overlay: {
       warnings: true,

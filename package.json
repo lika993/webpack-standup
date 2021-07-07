@@ -4,8 +4,8 @@
   "description": "My template",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV='dev' webpack-dev-server --open --config ./build/webpack.base.conf.js",
-    "build": "cross-env NODE_ENV='production' webpack --config ./build/webpack.base.conf.js"
+    "dev": "cross-env NODE_ENV='dev' webpack-dev-server --open --config webpack.base.conf.js",
+    "build": "cross-env NODE_ENV='production' webpack --config webpack.base.conf.js"
   },
   "browserslist": [
     "> 1%",
