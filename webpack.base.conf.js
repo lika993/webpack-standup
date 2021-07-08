@@ -1,11 +1,12 @@
 /* Base config:
   ========================================================================== */
 
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const { merge } = require('webpack-merge');
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -15,24 +16,8 @@ const PATHS = {
   dist: path.join(__dirname, './public/static'),
   assets: 'assets/'
 }
-const buildConfig = {
-  mode: 'production'
-};
-
-const devConfig = {
-  devtool: 'eval',
-  devServer: {
-    contentBase: path.join(__dirname, './public/static'),
-    port: 8081,
-    overlay: {
-      warnings: true,
-      errors: true
-    }
-  }
-}
 
 const baseWebpackConfig = {
-  mode: isDev ? 'development' : 'production',
   entry: {
     app: PATHS.src
   },
@@ -101,6 +86,21 @@ const baseWebpackConfig = {
   ]
 };
 
-const { merge } = require('webpack-merge');
+const buildConfig = {
+  mode: 'production'
+};
+
+const devConfig = {
+  mode: 'development',
+  devtool: 'eval',
+  devServer: {
+    contentBase: path.join(__dirname, './public/static'),
+    port: 8081,
+    overlay: {
+      warnings: true,
+      errors: true
+    }
+  }
+}
 
 module.exports = merge(isDev ? devConfig : buildConfig, baseWebpackConfig);
