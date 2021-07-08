@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      message: 'adExample Vue component'
+      message: 'Vue worked'
     }
   }
 }
