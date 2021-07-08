@@ -26,6 +26,7 @@ const baseWebpackConfig = {
     path: PATHS.dist,
     publicPath: isDev ? '/' : './'
   },
+  mode: 'production',
   module: {
     rules: [
       {
@@ -87,7 +88,7 @@ const baseWebpackConfig = {
 };
 
 const buildConfig = {
-  mode: 'production'
+  mode: 'production',
 };
 
 const devConfig = {

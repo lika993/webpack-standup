@@ -1,6 +1,10 @@
 // JS
 import './js/'
 
+import { minus } from "./js/mathUtils";
+
+console.log(minus(1, 2))
+
 // SCSS
 import './assets/scss/main.scss'
 
